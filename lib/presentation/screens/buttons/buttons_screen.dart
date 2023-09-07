@@ -34,8 +34,8 @@ class _ButtonsView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Wrap(
-          spacing: 10,
-          alignment: WrapAlignment.center,
+          spacing: 50,
+          alignment: WrapAlignment.spaceAround,
           children: [
             ElevatedButton(onPressed: (){}, child: const Text('Elevated')),
             const ElevatedButton(onPressed: null, child: Text('Elevated Disable')),
@@ -50,6 +50,7 @@ class _ButtonsView extends StatelessWidget {
             TextButton(onPressed: (){}, child: const Text('Text')),
             TextButton.icon(onPressed: (){}, icon: const Icon(Icons.add_comment_outlined),label: const Text('Text Icon')),
 
+            const CustomButton(),
 
             IconButton(onPressed: (){}, icon: const Icon(Icons.add_ic_call_rounded)),
             IconButton(onPressed: (){}, icon: const Icon(Icons.add_ic_call_rounded), 
@@ -65,3 +66,25 @@ class _ButtonsView extends StatelessWidget {
     );
   }
 }  
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Material(
+        color: colors.primary,
+        child: InkWell(
+          onTap: (){},
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Text('Hola Mundo', style: TextStyle(color: Colors.white),),
+          ),
+        ),
+      ),
+    );
+  }
+}
